@@ -1,0 +1,37 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    {% block titulo %}
+        <title>Page</title>
+    {% endblock %}
+
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <h1>Menu Superior</h1>
+    <ul>
+        <li>
+            <a href="{% url "index" %}">Início</a>
+        </li>
+        <li>
+            <a href="{% url "about" %}">Sobre nós</a>
+        </li>
+    </ul>
+
+    {% block conteudo %}
+        <h1>Página inicial</h1>
+
+        <p>
+            Napoleon
+        </p>
+
+    {% endblock %}
+
+    
+</body>
+</html>
