@@ -1,0 +1,48 @@
+{% extends "pages/index.html" %}
+
+{% block title %}{% if view.object %}Editar{% else %}Adicionar{% endif %} filme{% endblock %}
+
+{% block content %}
+
+<div class="w-[50%] mx-auto py-12 px-6 bg-white shadow-md rounded mt-12 flex-grow">
+    <h1 class="text-3xl font-bold mb-6 text-center">Filmes</h1>
+
+    <div class="mb-6 text-center">
+        <a
+            href="{% url 'movie-create' %}"
+            class="inline-block bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700"
+        >
+            Adicionar filme
+        </a>
+    </div>
+
+    <table class="w-full table-auto border-collapse border border-gray-300">
+        <thead>
+            <tr class="bg-gray-200">
+                <th class="border border-gray-300 px-4 py-2 text-left">Nome</th>
+                <th class="border border-gray-300 px-4 py-2 text-left">Descrição</th>
+                <th class="border border-gray-300 px-4 py-2 text-left">Gênero</th>
+                <th class="border border-gray-300 px-4 py-2 text-center">Ação</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for movie in object_list %}
+            <tr class="hover:bg-gray-100">
+                <td class="border border-gray-300 px-4 py-2">{{ movie.name }}</td>
+                <td class="border border-gray-300 px-4 py-2">{{ movie.description|truncatechars:50 }}</td>
+                <td class="border border-gray-300 px-4 py-2">{{ movie.genre }}</td>
+                <td class="border border-gray-300 px-4 py-2 text-center space-x-2">
+                    <a href="{% url 'movie-update' movie.pk %}" class="text-blue-600 hover:underline">Editar</a>
+                    <a href="{% url 'movie-delete' movie.pk %}" class="text-red-600 hover:underline">Deletar</a>
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="5" class="text-center py-4 text-gray-500">Nenhum filme encontrado.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}

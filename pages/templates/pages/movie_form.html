@@ -1,0 +1,42 @@
+{% extends "pages/index.html" %}
+
+{% block title %}{% if view.object %}Editar{% else %}Adicionar{% endif %} filme{% endblock %}
+
+{% load form_tags %}
+
+{% block content %}
+
+<div class="max-w-xl mx-auto py-12 px-6 bg-white shadow-md rounded mt-12">
+    <h1 class="text-2xl font-bold mb-6 text-center">
+        {% if view.object %}Editar{% else %}Adicionar{% endif %} filme
+    </h1>
+
+    <form method="post" class="space-y-4">
+        {% csrf_token %} {{ form.non_field_errors }}
+
+        <div>
+            <label class="block font-medium mb-1" for="id_name">Nome</label>
+            {{ form.name|add_class:"w-full p-2 border border-gray-300 rounded" }} {{ form.name.errors }}
+        </div>
+
+        <div>
+            <label class="block font-medium mb-1" for="id_description">Descrição</label>
+            {{ form.description|add_class:"w-full p-2 border border-gray-300 rounded" }} {{ form.description.errors }}
+        </div>
+
+        <div>
+            <label class="block font-medium mb-1" for="id_genre">Gênero</label>
+            {{ form.genre|add_class:"w-full p-2 border border-gray-300 rounded" }} {{ form.genre.errors }}
+        </div>
+
+        <div class="flex justify-between mt-6">
+            <a href="{% url 'movie-list' %}" class="text-gray-600 hover:underline">Cancelar</a>
+            <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+                {% if view.object %}Editar{% else %}Criar{% endif %}
+            </button>
+        </div>
+    </form>
+</div>
+
+{% endblock %}
+

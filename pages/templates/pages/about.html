@@ -1,7 +1,27 @@
 {% extends "pages/index.html" %}
 
+{% block title %}Sobre Nós{% endblock %}
+
 {% load static %}
 
-{% block conteudo %}
-    <h3>Muinto foda meu mano</h3>
+{% block content %}
+
+<h2 class="text-2xl font-semibold mb-6">Sobre o Projeto</h2>
+
+<p class="mb-6">
+    Este projeto foi desenvolvido como parte da disciplina de Programação Web, com o objetivo de aplicar os conhecimentos em Django.
+    Trata-se de um quiz onde o usuário precisa adivinhar o filme correto com base em sua sinopse.
+    O sistema atualmente possui o cadastro de filmes completo.
+</p>
+
+<div class="mb-10">
+    <h3 class="text-xl font-semibold mb-2 text-center">Diagrama de Casos de Uso</h3>
+    <img src="{% static 'images/use_case_diagram.png' %}" alt="Diagrama de Casos de Uso" class="border rounded shadow w-full max-w-3xl mb-4 mx-auto" />
+</div>
+
+<div class="mb-10">
+    <h3 class="text-xl font-semibold mb-2 text-center">Diagrama de Classes</h3>
+    <img src="{% static 'images/class_diagram.png' %}" alt="Diagrama de Classes" class="border rounded shadow w-full max-w-3xl mx-auto" />
+</div>
+
 {% endblock %}

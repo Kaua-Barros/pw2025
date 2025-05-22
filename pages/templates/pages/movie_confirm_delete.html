@@ -1,0 +1,23 @@
+{% extends "pages/index.html" %}
+
+{% block title %}{% if view.object %}Editar{% else %}Adicionar{% endif %} filme{% endblock %}
+
+{% load form_tags %}
+
+{% block content %}
+
+<div class="max-w-md mx-auto py-12 px-6 bg-white shadow-md rounded mt-12 text-center">
+    <h1 class="text-2xl font-bold mb-6">Deletar filme</h1>
+
+    <p class="mb-6 text-gray-700">Tem certeza que quer deletar <strong>{{ object.name }}</strong>?</p>
+
+    <form method="post" class="flex justify-center gap-4">
+        {% csrf_token %}
+        <a href="{% url 'movie-list' %}" class="text-gray-600 hover:underline">Cancelar</a>
+        <button type="submit" class="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700">
+            Confirmar
+        </button>
+    </form>
+</div>
+
+{% endblock %}

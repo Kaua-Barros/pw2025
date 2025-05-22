@@ -1,37 +1,38 @@
-{% load static %}
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    {% block titulo %}
-        <title>Page</title>
-    {% endblock %}
-
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{% block title %}Quiz de Filmes{% endblock %}</title>
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-    <h1>Menu Superior</h1>
-    <ul>
-        <li>
-            <a href="{% url "index" %}">Início</a>
-        </li>
-        <li>
-            <a href="{% url "about" %}">Sobre nós</a>
-        </li>
-    </ul>
+<body class="flex flex-col min-h-screen">
 
-    {% block conteudo %}
-        <h1>Página inicial</h1>
+  <header class="bg-blue-600 text-white p-4 flex justify-between items-center">
+    <h1 class="text-3xl font-bold">Quiz de Filmes</h1>
+    <nav class="space-x-4">
+      <a href="{% url 'index' %}" class="hover:underline">Início</a>
+      <a href="{% url 'movie-list' %}" class="hover:underline">Filmes</a>
+      <a href="{% url 'about' %}" class="hover:underline">Sobre Nós</a>
+    </nav>
+  </header>
 
-        <p>
-            Napoleon
-        </p>
-
+  <main class="flex-grow container mx-auto px-4 py-8">
+    {% block content %}
+    <h2 class="text-xl font-semibold mb-4">Bem-vindo ao Quiz de Filmes!</h2>
+    <p class="mb-6">
+      Teste seus conhecimentos sobre filmes tentando adivinhar qual é o filme pela sinopse.
+      Crie uma conta e comece a jogar agora!
+    </p>
+    <a href="{% url 'movie-list' %}" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+      Ver Filmes
+    </a>
     {% endblock %}
+  </main>
 
-    
+  <footer class="bg-gray-800 text-gray-300 p-4 text-center">
+    <p class="text-sm">&copy; 2025 Quiz de Filmes. Nenhum direito reservado.</p>
+  </footer>
+
 </body>
 </html>
